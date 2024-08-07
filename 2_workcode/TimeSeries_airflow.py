@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.utils.dates import days_ago
 from transformation_all import busan_all
 from transformation_gugun import busan_gugun
 from transformation_adong import busan_adong 
@@ -9,7 +10,7 @@ from metadata_record import metadata_record
 # DAG 기본 설정
 dag = DAG(
     dag_id="TimeSeries_pipeline",
-    start_date=airflow.utils.dates.days_ago(14),
+    start_date=days_ago(14),
     schedule_interval="@once",
 )
 
